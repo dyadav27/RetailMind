@@ -1,2 +1,2 @@
 # RetailMind
-AI-Powered Omnichannel Inventory &amp; Delivery Optimizer.
+AI-Powered Omnichannel Inventory &amp; Delivery Optimizer!
