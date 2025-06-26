@@ -8,6 +8,8 @@ load_dotenv()
 
 API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
 
+print("🔐 GOOGLE_MAPS_API_KEY:", API_KEY)
+
 def estimate_delivery(source: str, destination: str, urgency: str):
     # Map fulfillment center IDs to addresses or cities (mock example)
     location_map = {
