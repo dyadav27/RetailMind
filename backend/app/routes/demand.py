@@ -1,19 +1,13 @@
-# /predict-demand
-
-# backend/app/routes/demand.py
-
 from fastapi import APIRouter
 from pydantic import BaseModel
+from app.ml.forecast import predict_demand
 
 router = APIRouter()
 
-class SKURequest(BaseModel):
-    sku_id: str
-    location_id: str
+class DemandRequest(BaseModel):
+    store_id: int
+    dept_id: int
 
 @router.post("/predict-demand")
-def predict_demand(sku: SKURequest):
-    return {
-        "sku_id": sku.sku_id,
-        "predicted_demand": [40, 42, 38, 55]  # Dummy forecast
-    }
+def forecast_demand_route(req: DemandRequest):
+    return predict_demand(req.store_id, req.dept_id)
