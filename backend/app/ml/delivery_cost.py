@@ -1,25 +1,47 @@
 # Cost + ETA model
 
-def estimate_delivery(source: str, destination: str, urgency: str) -> dict:
-    # Simulated distance map (in km)
-    distance_map = {
-        ("Mumbai", "Mumbai"): 5,
-        ("Mumbai", "Pune"): 150,
-        ("Mumbai", "Bangalore"): 980,
-        ("Pune", "Mumbai"): 150,
-        ("Pune", "Bangalore"): 830,
-        ("Bangalore", "Mumbai"): 980
+import os
+import requests
+from dotenv import load_dotenv
+
+load_dotenv()
+
+API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
+
+def estimate_delivery(source: str, destination: str, urgency: str):
+    # Map fulfillment center IDs to addresses or cities (mock example)
+    location_map = {
+        "C001": "Mumbai",
+        "C002": "Pune",
+        "C003": "Bangalore"
     }
 
-    distance = distance_map.get((source, destination), 999)
+    origin = location_map.get(source, source)
+    dest = destination
 
+    url = (
+        f"https://maps.googleapis.com/maps/api/distancematrix/json"
+        f"?origins={origin}&destinations={dest}&key={API_KEY}"
+    )
+
+    response = requests.get(url)
+    data = response.json()
+
+    try:
+        duration_sec = data["rows"][0]["elements"][0]["duration"]["value"]
+        distance_meters = data["rows"][0]["elements"][0]["distance"]["value"]
+    except Exception:
+        return {"error": "Failed to fetch from Google Maps API"}
+
+    # Convert to hours and km
+    eta_hours = round(duration_sec / 3600, 2)
+    distance_km = distance_meters / 1000
+
+    # Sample cost estimate logic
     base_cost = 50
-    cost_per_km = 0.5
-    speed = 40 if urgency == "standard" else 60
-    express_surcharge = 30 if urgency == "express" else 0
-
-    eta_hours = round(distance / speed, 2)
-    cost = round(base_cost + (distance * cost_per_km) + express_surcharge, 2)
+    cost_per_km = 20
+    cost = base_cost + cost_per_km * distance_km
+    cost = round(cost, 2)
 
     return {
         "from": source,
