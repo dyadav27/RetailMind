@@ -1,0 +1,4 @@
+center_id,location,stock_dict,active_orders
+C001,Mumbai,"{'A123': 30, 'B001': 15}",4
+C002,Pune,"{'A123': 10, 'B001': 2}",6
+C003,Bangalore,"{'A123': 5, 'B001': 20}",10
