@@ -1,8 +1,17 @@
 # /delivery-estimate
-import logging
 from fastapi import APIRouter
+from pydantic import BaseModel
+from app.ml.delivery_cost import estimate_delivery
 
 router = APIRouter()
-@router.get("/delivery-estimate")
-def estimate_delivery():
-    return {"message": "Delivery estimation logic will go here"}
+
+class DeliveryRequest(BaseModel):
+    source: str
+    destination: str
+    urgency: str  # 'standard' or 'express'
+
+@router.post("/delivery-estimate")
+def get_delivery_estimate(req: DeliveryRequest):
+    result = estimate_delivery(req.source, req.destination, req.urgency)
+    return result
+

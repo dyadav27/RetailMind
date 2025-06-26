@@ -5,7 +5,7 @@ import ast
 from typing import Optional
 
 def suggest_fulfillment_center(sku_id: str, location: str, quantity: int) -> Optional[str]:
-    df = pd.read_csv("backend/data/centers.csv")
+    df = pd.read_csv("../data/centers.csv")
     df["stock_dict"] = df["stock_dict"].apply(ast.literal_eval)
 
     # Filter centers with enough stock
