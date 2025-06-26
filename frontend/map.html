@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>RetailMind – Route Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" />
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Esri Geocoding (for place -> coordinates) -->
+    <script src="https://unpkg.com/esri-leaflet"></script>
+    <script src="https://unpkg.com/esri-leaflet-geocoder"></script>
+
+    <style>
+      body {
+        font-family: 'Space Grotesk', sans-serif;
+        background-color: #f8fcf8;
+      }
+      #map {
+        height: 500px;
+        width: 100%;
+        border-radius: 12px;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="flex items-center justify-between border-b border-[#e7f4e7] px-10 py-3">
+      <div class="flex items-center gap-4 text-[#0d1c0d]">
+        <div class="size-4">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor" />
+          </svg>
+        </div>
+        <h2 class="text-lg font-bold">RetailMind</h2>
+      </div>
+    </header>
+
+    <!-- Form and Map -->
+    <main class="p-10 max-w-5xl mx-auto">
+      <h1 class="text-2xl font-bold text-[#0d1c0d] mb-4">Track Delivery Route</h1>
+
+      <form id="routeForm" class="mb-6 flex flex-col gap-4 md:flex-row">
+        <input
+          id="source"
+          type="text"
+          required
+          placeholder="Source City (e.g., Mumbai)"
+          class="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-md"
+        />
+        <input
+          id="destination"
+          type="text"
+          required
+          placeholder="Destination City (e.g., Delhi)"
+          class="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-md"
+        />
+        <button type="submit" class="px-6 py-2 bg-[#499c49] text-white rounded-md font-semibold">
+          Show Route
+        </button>
+      </form>
+
+      <div id="map"></div>
+    </main>
+
+    <script>
+      const map = L.map("map").setView([22.9734, 78.6569], 5); // India center
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors",
+      }).addTo(map);
+
+      const apiKey = "5b3ce3597851110001cf624817c0543f66614bc6bd96212133f513f8";
+      let routeLine, sourceMarker, destMarker;
+
+      async function getCoordinates(place) {
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(place)}`
+        );
+        const data = await response.json();
+        if (data.length === 0) throw new Error(`Location not found: ${place}`);
+        return [parseFloat(data[0].lon), parseFloat(data[0].lat)];
+      }
+
+      async function drawRoute(sourceCity, destCity) {
+        try {
+          const [sourceCoords, destCoords] = await Promise.all([
+            getCoordinates(sourceCity),
+            getCoordinates(destCity),
+          ]);
+
+          // Clean previous layers
+          if (routeLine) map.removeLayer(routeLine);
+          if (sourceMarker) map.removeLayer(sourceMarker);
+          if (destMarker) map.removeLayer(destMarker);
+
+          // Place markers
+          sourceMarker = L.marker([sourceCoords[1], sourceCoords[0]]).addTo(map).bindPopup("Source: " + sourceCity).openPopup();
+          destMarker = L.marker([destCoords[1], destCoords[0]]).addTo(map).bindPopup("Destination: " + destCity).openPopup();
+
+          // Route fetch from OpenRouteService
+          const response = await fetch("https://api.openrouteservice.org/v2/directions/driving-car", {
+            method: "POST",
+            headers: {
+              "Authorization": apiKey,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ coordinates: [sourceCoords, destCoords] }),
+          });
+
+          const result = await response.json();
+          const routeCoords = result.features[0].geometry.coordinates.map(([lng, lat]) => [lat, lng]);
+
+          routeLine = L.polyline(routeCoords, {
+            color: "green",
+            weight: 4,
+          }).addTo(map);
+
+          map.fitBounds(routeLine.getBounds());
+
+        } catch (err) {
+          alert("Error: " + err.message);
+        }
+      }
+
+      document.getElementById("routeForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const source = document.getElementById("source").value;
+        const dest = document.getElementById("destination").value;
+        drawRoute(source, dest);
+      });
+    </script>
+  </body>
+</html>
+<!-- <script>
+ -->

@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
+    />
+
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-[#f8fcf8] group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7f4e7] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#0d1c0d]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path></svg>
+            </div>
+            <h2 class="text-[#0d1c0d] text-lg font-bold leading-tight tracking-[-0.015em]">RetailMind</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#0d1c0d] text-sm font-medium leading-normal" href="#">Dashboard</a>
+              <a class="text-[#0d1c0d] text-sm font-medium leading-normal" href="#">Inventory</a>
+              <a class="text-[#0d1c0d] text-sm font-medium leading-normal" href="#">Orders</a>
+              <a class="text-[#0d1c0d] text-sm font-medium leading-normal" href="#">Customers</a>
+              <a class="text-[#0d1c0d] text-sm font-medium leading-normal" href="#">Analytics</a>
+            </div>
+            <button
+              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#e7f4e7] text-[#0d1c0d] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
+            >
+              <div class="text-[#0d1c0d]" data-icon="Bell" data-size="20px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path
+                    d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"
+                  ></path>
+                </svg>
+              </div>
+            </button>
+            <div
+              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC5VRKjBzs0jI7CPRYUeaRZe4O-ij5IPqfonyH6v_aKxgMZNz-byJqx-GPjUcbp1SLHOzJbxmo-WKfg8yQBq5dR4XMb0qZq__xx3CQPNqlJCTQDpgR7M4sFTWyWl2Lac1WMROuJhEfEWb7fmD_tvbZLZGgSK9q7LBjyVPGCqPTtW1xKpAvOzDpYXyDP3jXVjAe7pDs-qxq1Jw9HKrPp17ccB8LsyDoqLPRpxVWMZJ3hIMZAauug4WczgWwE65DOc7F4sapZtB9s3erQ");'
+            ></div>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="flex flex-wrap justify-between gap-3 p-4">
+              <p class="text-[#0d1c0d] tracking-light text-[32px] font-bold leading-tight min-w-72">Fulfillment and Delivery Estimation</p>
+            </div>
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <p class="text-[#0d1c0d] text-base font-medium leading-normal pb-2">SKU ID</p>
+                <input
+                  placeholder="Enter SKU ID"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#0d1c0d] focus:outline-0 focus:ring-0 border border-[#cee8ce] bg-[#f8fcf8] focus:border-[#cee8ce] h-14 placeholder:text-[#499c49] p-[15px] text-base font-normal leading-normal"
+                  value=""
+                />
+              </label>
+            </div>
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <p class="text-[#0d1c0d] text-base font-medium leading-normal pb-2">Quantity</p>
+                <input
+                  placeholder="Enter quantity"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#0d1c0d] focus:outline-0 focus:ring-0 border border-[#cee8ce] bg-[#f8fcf8] focus:border-[#cee8ce] h-14 placeholder:text-[#499c49] p-[15px] text-base font-normal leading-normal"
+                  value=""
+                />
+              </label>
+            </div>
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <p class="text-[#0d1c0d] text-base font-medium leading-normal pb-2">Customer Location</p>
+                <input
+                  placeholder="Enter customer location"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#0d1c0d] focus:outline-0 focus:ring-0 border border-[#cee8ce] bg-[#f8fcf8] focus:border-[#cee8ce] h-14 placeholder:text-[#499c49] p-[15px] text-base font-normal leading-normal"
+                  value=""
+                />
+              </label>
+            </div>
+            <h2 class="text-[#0d1c0d] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Recommended Fulfillment Center</h2>
+            <p class="text-[#0d1c0d] text-base font-normal leading-normal pb-3 pt-1 px-4">West Coast Distribution Center</p>
+            <h2 class="text-[#0d1c0d] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Estimated Delivery Time</h2>
+            <p class="text-[#0d1c0d] text-base font-normal leading-normal pb-3 pt-1 px-4">3-5 business days</p>
+            <h2 class="text-[#0d1c0d] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Estimated Delivery Cost</h2>
+            <p class="text-[#0d1c0d] text-base font-normal leading-normal pb-3 pt-1 px-4">$7.50</p>
+            <div class="flex px-4 py-3 justify-end">
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#0acb0a] text-[#0d1c0d] text-sm font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Calculate</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<!--                 </div>
+ -->
