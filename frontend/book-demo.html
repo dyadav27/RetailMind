@@ -1,0 +1,125 @@
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Lexend%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #f2df0c;
+        --secondary-color: #1e40af;--text-color: #1c1b0d;--background-color: #fcfbf8;--white-color: #ffffff;
+      }
+      .classic-font {
+        font-family: 'Times New Roman', Times, serif;
+      }
+      .lexend-font {
+        font-family: 'Lexend', "Noto Sans", sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-[var(--background-color)] lexend-font text-[var(--text-color)]">
+<div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 px-10 py-4 bg-[var(--white-color)] shadow-sm">
+<div class="flex items-center gap-4">
+<svg class="h-8 w-8 text-[var(--primary-color)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path></svg>
+<h2 class="text-2xl font-bold leading-tight tracking-tight classic-font">RetailMind</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-[var(--primary-color)] transition-colors classic-font" href="#">Home</a>
+<a class="text-sm font-medium hover:text-[var(--primary-color)] transition-colors classic-font" href="#">Product</a>
+<a class="text-sm font-medium hover:text-[var(--primary-color)] transition-colors classic-font" href="#">Pricing</a>
+<a class="text-sm font-medium hover:text-[var(--primary-color)] transition-colors classic-font" href="#">Resources</a>
+</nav>
+<div>
+<button class="flex min-w-[100px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-5 bg-[var(--primary-color)] text-[var(--text-color)] text-sm font-bold leading-normal tracking-[0.015em] hover:bg-yellow-400 transition-colors classic-font">
+<span class="truncate">Contact Sales</span>
+</button>
+</div>
+</header>
+<main class="flex-1">
+<section class="relative py-20 md:py-28 bg-cover bg-center" style='background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.85)), url("https://images.unsplash.com/photo-1587293852726-70cdb1382866?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1740&amp;q=80");'>
+<div class="container mx-auto px-6 text-center">
+<h1 class="text-4xl md:text-5xl font-bold classic-font text-[var(--text-color)] mb-4">
+                Book a Free Demo of <span class="text-[var(--secondary-color)]">RetailMind</span>
+</h1>
+<p class="text-lg md:text-xl text-gray-700 mb-10 classic-font">
+                Talk with our AI experts and see RetailMind in action!
+              </p>
+<div class="max-w-2xl mx-auto bg-[var(--white-color)] p-8 md:p-12 rounded-xl shadow-2xl">
+<form class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 text-left classic-font mb-1" for="name">Name</label>
+<input class="form-input block w-full rounded-md border-gray-300 shadow-sm focus:border-[var(--primary-color)] focus:ring focus:ring-[var(--primary-color)] focus:ring-opacity-50 h-12 px-4 classic-font" id="name" placeholder="Your Name" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 text-left classic-font mb-1" for="email">Email</label>
+<input class="form-input block w-full rounded-md border-gray-300 shadow-sm focus:border-[var(--primary-color)] focus:ring focus:ring-[var(--primary-color)] focus:ring-opacity-50 h-12 px-4 classic-font" id="email" placeholder="Your Email" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 text-left classic-font mb-1" for="company">Company Name</label>
+<input class="form-input block w-full rounded-md border-gray-300 shadow-sm focus:border-[var(--primary-color)] focus:ring focus:ring-[var(--primary-color)] focus:ring-opacity-50 h-12 px-4 classic-font" id="company" placeholder="Your Company" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 text-left classic-font mb-1" for="datetime">Preferred Date &amp; Time</label>
+<input class="form-input block w-full rounded-md border-gray-300 shadow-sm focus:border-[var(--primary-color)] focus:ring focus:ring-[var(--primary-color)] focus:ring-opacity-50 h-12 px-4 classic-font" id="datetime" type="datetime-local"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 text-left classic-font mb-1" for="message">Use Case / Message</label>
+<textarea class="form-textarea block w-full rounded-md border-gray-300 shadow-sm focus:border-[var(--primary-color)] focus:ring focus:ring-[var(--primary-color)] focus:ring-opacity-50 p-4 classic-font" id="message" placeholder="How can we help you?" rows="4"></textarea>
+</div>
+<div>
+<button class="w-full flex items-center justify-center rounded-md h-12 px-6 bg-[var(--primary-color)] text-[var(--text-color)] text-base font-semibold classic-font hover:bg-yellow-400 transition-colors shadow-md" type="submit">
+                      Request Demo
+                    </button>
+</div>
+</form>
+</div>
+</div>
+</section>
+<section class="py-16 md:py-24 bg-gray-50">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-bold text-center text-[var(--text-color)] mb-12 classic-font">
+                What Our Customers Say
+              </h2>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-[var(--white-color)] p-8 rounded-lg shadow-lg">
+<img alt="Customer photo" class="w-20 h-20 rounded-full mx-auto mb-6 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDypGFMdORke0MOx8rk20iiIdjvRCoWOBqEBcyOoVYL7L6hwBP70i3bC7kesqHYSgzNcfR9RFPsvEyX0oOVatBn3dWI-UHY-9pkEQLjefoB7bWG0t4JcWdBLKbzR3nPhwBDdpgdx-o0zeU9Eer2DSwyEahzJnRMKQQxN04EPTXpJAbISGebeT-B0-4ppUIOK4a0HtrQWtXYEBs01KMQ58IQYAGjcxVlCMF5alPV7PacEY2k11yLKA7oDOdWX-VCeDiNWkLEAkvgtRg"/>
+<p class="text-gray-600 italic mb-4 classic-font text-center">
+                    "RetailMind has revolutionized our inventory management. We've seen a significant reduction in stockouts and an increase in customer satisfaction."
+                  </p>
+<p class="text-sm font-semibold text-[var(--secondary-color)] text-center classic-font">Sarah Chen</p>
+<p class="text-xs text-gray-500 text-center classic-font">Operations Manager at Local Boutique</p>
+</div>
+<div class="bg-[var(--white-color)] p-8 rounded-lg shadow-lg">
+<img alt="Customer photo" class="w-20 h-20 rounded-full mx-auto mb-6 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiGIzKffBjBNm-4BJUKX43eiLYu_ohnFTBTchuaGRXEgNRr-gvb3rjNTQL5Bv5B-umhdgsxvnh5lgz8zNuvnOKx7cMeQ8tI1y9WUjl6FsoPgWlxPcKCWPV8kHiX0_f_Xj9mCM-tTJ6KXF269FmOSeGNMH1YmtIJRQeDvseUseLpsacrCUdvfeoyVXkjwSvowAwqEkPpIgBAoHB2T-NDqeYoSdDV01CFiEKHWLRGW6YfuBAo1lpc5TmbI_pfEuXdku9K1qb4Eq23pQ"/>
+<p class="text-gray-600 italic mb-4 classic-font text-center">
+                    "The AI-driven insights from RetailMind have helped us optimize our delivery routes, saving us time and resources."
+                  </p>
+<p class="text-sm font-semibold text-[var(--secondary-color)] text-center classic-font">David Lee</p>
+<p class="text-xs text-gray-500 text-center classic-font">Logistics Director at Regional Chain</p>
+</div>
+<div class="bg-[var(--white-color)] p-8 rounded-lg shadow-lg">
+<img alt="Customer photo" class="w-20 h-20 rounded-full mx-auto mb-6 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmeCvbdD5_JpCgfTRAEmWVxisMvuDXpCWYZBE3bNRRb81sIQxVRqVnTfZYxJda7cTRNyyoAh2DKPWsQOhlO5dDsbFeXbcAkzJwDZcgEBsLFdvFQCXR4dMIE_VenGFtuYZC74RrbPTAEZ6AnvFxnrT64mTV4yJ4QQddqib13mgjlWEGsSBogzlXKv4lNtHuSFXMyWoASXmz66TjQIT66_Bdlpbs7xMYtMXghiibyWSFbtuR38YizeDtEs-2mXV3shtU6_aPGfhiR6I"/>
+<p class="text-gray-600 italic mb-4 classic-font text-center">
+                    "Thanks to RetailMind, we now have a clear understanding of our sales trends, allowing us to make informed decisions about our product offerings."
+                  </p>
+<p class="text-sm font-semibold text-[var(--secondary-color)] text-center classic-font">Emily Wong</p>
+<p class="text-xs text-gray-500 text-center classic-font">Sales Analyst at National Retailer</p>
+</div>
+</div>
+<div class="mt-12 text-center">
+<button class="inline-flex items-center justify-center rounded-md h-12 px-8 bg-[var(--secondary-color)] text-[var(--white-color)] text-base font-semibold classic-font hover:bg-blue-700 transition-colors shadow-md">
+                  Back to Home
+                </button>
+</div>
+</div>
+</section>
+</main>
+<footer class="py-8 bg-gray-800 text-gray-400 text-center">
+<p class="classic-font">© 2023 RetailMind. All rights reserved.</p>
+</footer>
+</div>
+</div>
+</body></html>
