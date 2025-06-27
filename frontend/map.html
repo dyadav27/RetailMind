@@ -1,110 +1,128 @@
-<html><head>
-<meta charset="utf-8"/>
-<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
-<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Bogle%3Awght%40400%3B700&amp;family=Bogle+Web%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
-<title>RetailMind - Route Optimization</title>
-<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<style type="text/tailwindcss">
-      :root {
-        --primary-color: #FFD700;--primary-hover-color: #FFC700;--secondary-color: #0052CC;--text-primary: #000000;--text-secondary: #4A4A4A;--background-light: #FFFFFF;--card-background: rgba(255, 255, 255, 0.9);
-        --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07);
-        --shadow-md: 0 6px 10px 0 rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-        --font-primary: 'Bogle', sans-serif;--font-secondary: 'Bogle Web', sans-serif;}
-      .map-controls-panel {
-        background-color: var(--card-background);
-        backdrop-filter: blur(8px);-webkit-backdrop-filter: blur(8px);}
-      body {
-        font-family: var(--font-secondary);
-      }
-      .font-classic {font-family: var(--font-primary);
-        font-weight: 700;}
-      .nav-link {
-         font-family: var(--font-secondary);}
-    </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>RetailMind - Route Optimization</title>
+  <link rel="icon" href="data:image/x-icon;base64," type="image/x-icon"/>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Leaflet Core -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Leaflet Routing Machine (Optional for markers/arrows) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?display=swap&family=Bogle:wght@400;700&family=Bogle+Web:wght@400;500;700;900" rel="stylesheet" as="style" onload="this.rel='stylesheet'">
+
+  <style type="text/tailwindcss">
+    :root {
+      --primary-color: #FFD700;
+      --primary-hover-color: #FFC700;
+      --secondary-color: #0052CC;
+      --text-primary: #000000;
+      --text-secondary: #4A4A4A;
+      --background-light: #FFFFFF;
+      --card-background: rgba(255, 255, 255, 0.9);
+      --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07);
+      --shadow-md: 0 6px 10px 0 rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+      --font-primary: 'Bogle', sans-serif;
+      --font-secondary: 'Bogle Web', sans-serif;
+    }
+
+    .map-controls-panel {
+      background-color: var(--card-background);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    body {
+      font-family: var(--font-secondary);
+    }
+
+    .font-classic {
+      font-family: var(--font-primary);
+      font-weight: 700;
+    }
+
+    .nav-link {
+      font-family: var(--font-secondary);
+    }
+  </style>
 </head>
-<body class="antialiased">
-<div class="relative flex size-full min-h-screen flex-col bg-[var(--background-light)] group/design-root overflow-x-hidden">
-<div class="layout-container flex h-full grow flex-col">
-<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 px-6 md:px-10 py-4 shadow-sm bg-[var(--secondary-color)]">
-<div class="flex items-center gap-3 text-[var(--primary-color)]">
-<div class="size-7">
-<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path d="M13.8261 17.4264C16.7203 18.1174 20.2244 18.5217 24 18.5217C27.7756 18.5217 31.2797 18.1174 34.1739 17.4264C36.9144 16.7722 39.9967 15.2331 41.3563 14.1648L24.8486 40.6391C24.4571 41.267 23.5429 41.267 23.1514 40.6391L6.64374 14.1648C8.00331 15.2331 11.0856 16.7722 13.8261 17.4264Z" fill="currentColor"></path>
-<path clip-rule="evenodd" d="M39.998 12.236C39.9944 12.2537 39.9875 12.2845 39.9748 12.3294C39.9436 12.4399 39.8949 12.5741 39.8346 12.7175C39.8168 12.7597 39.7989 12.8007 39.7813 12.8398C38.5103 13.7113 35.9788 14.9393 33.7095 15.4811C30.9875 16.131 27.6413 16.5217 24 16.5217C20.3587 16.5217 17.0125 16.131 14.2905 15.4811C12.0012 14.9346 9.44505 13.6897 8.18538 12.8168C8.17384 12.7925 8.16216 12.767 8.15052 12.7408C8.09919 12.6249 8.05721 12.5114 8.02977 12.411C8.00356 12.3152 8.00039 12.2667 8.00004 12.2612C8.00004 12.261 8 12.2607 8.00004 12.2612C8.00004 12.2359 8.0104 11.9233 8.68485 11.3686C9.34546 10.8254 10.4222 10.2469 11.9291 9.72276C14.9242 8.68098 19.1919 8 24 8C28.8081 8 33.0758 8.68098 36.0709 9.72276C37.5778 10.2469 38.6545 10.8254 39.3151 11.3686C39.9006 11.8501 39.9857 12.1489 39.998 12.236ZM4.95178 15.2312L21.4543 41.6973C22.6288 43.5809 25.3712 43.5809 26.5457 41.6973L43.0534 15.223C43.0709 15.1948 43.0878 15.1662 43.104 15.1371L41.3563 14.1648C43.104 15.1371 43.1038 15.1374 43.104 15.1371L43.1051 15.135L43.1065 15.1325L43.1101 15.1261L43.1199 15.1082C43.1276 15.094 43.1377 15.0754 43.1497 15.0527C43.1738 15.0075 43.2062 14.9455 43.244 14.8701C43.319 14.7208 43.4196 14.511 43.5217 14.2683C43.6901 13.8679 44 13.0689 44 12.2609C44 10.5573 43.003 9.22254 41.8558 8.2791C40.6947 7.32427 39.1354 6.55361 37.385 5.94477C33.8654 4.72057 29.133 4 24 4C18.867 4 14.1346 4.72057 10.615 5.94478C8.86463 6.55361 7.30529 7.32428 6.14419 8.27911C4.99695 9.22255 3.99999 10.5573 3.99999 12.2609C3.99999 13.1275 4.29264 13.9078 4.49321 14.3607C4.60375 14.6102 4.71348 14.8196 4.79687 14.9689C4.83898 15.0444 4.87547 15.1065 4.9035 15.1529C4.91754 15.1762 4.92954 15.1957 4.93916 15.2111L4.94662 15.223L4.95178 15.2312ZM35.9868 18.996L24 38.22L12.0131 18.996C12.4661 19.1391 12.9179 19.2658 13.3617 19.3718C16.4281 20.1039 20.0901 20.5217 24 20.5217C27.9099 20.5217 31.5719 20.1039 34.6383 19.3718C35.082 19.2658 35.5339 19.1391 35.9868 18.996Z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-<h2 class="text-[var(--background-light)] text-3xl font-classic leading-tight tracking-tight">RetailMind</h2>
-</div>
-<div class="flex flex-1 justify-end items-center gap-6">
-<nav class="hidden md:flex items-center gap-6">
-<a class="nav-link text-[var(--background-light)] hover:text-[var(--primary-color)] text-sm font-medium leading-normal transition-colors" href="#">Dashboard</a>
-<a class="nav-link text-[var(--primary-color)] text-sm font-bold leading-normal" href="#">Routes</a>
-<a class="nav-link text-[var(--background-light)] hover:text-[var(--primary-color)] text-sm font-medium leading-normal transition-colors" href="#">Vehicles</a>
-<a class="nav-link text-[var(--background-light)] hover:text-[var(--primary-color)] text-sm font-medium leading-normal transition-colors" href="#">Settings</a>
-</nav>
-<button aria-label="Notifications" class="flex items-center justify-center rounded-lg h-10 w-10 bg-transparent hover:bg-[var(--primary-color)] text-[var(--background-light)] hover:text-[var(--text-primary)] transition-colors">
-<div class="text-current" data-icon="Bell" data-size="24px" data-weight="regular">
-<svg fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
-<path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"></path>
-</svg>
-</div>
-</button>
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-[var(--primary-color)] shadow-sm" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPVLIblMgVz1bkhmRuTctqEV9nxC_0wPkiXhHYfaaoXMsyKmcsLk4Q7vxqATJL6GP8dNYxWiTEE8KkR-k7ua27qUd_bcsy5CFpkHVkKSjc2SFm0pgnahuNLWdqWYqj8DxLUbvC2DRZ18mP_QosHpQSCwjA_AMOX6_SlnmjjGAQsOaYTKBCOemXHcfZ5VVQeAZjgsw4cJoVp2A9I0-9AlsRBITorDxSS3F9cUSEns_8KxwXATCc1l4P6HoyYeSrsl8WDk_7Fsgoqe4");'></div>
-</div>
-</header>
-<main class="flex-1 relative">
-<div class="absolute inset-0 bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAtQ5CyXclXI2NSuz_scMeeRqgN-SEXgwKBPtw3yl7tGqqdt6n8bPgAbw4vPGM17Vudb1i-uG59Q6TODS8a_L6uBNbnFu_ZBLxPk2josvfbSqW7g_vfdYTvBHqCyQbVmP_-ShplN3Sjk4c1ZnOn0VVNGmHIBoP7ldvCejHeHg38s_Cnn2aVcGEYx-OFYnPcZhjm-Achuk2r9naJ67VZe25jQT0-m1ABGRHQxGToQOqJgTNM8qMHLbF7jjf4a9gxFKS7c8u9gPUtXu8");'></div>
-<div class="absolute inset-0 flex flex-col p-4 md:p-6 @container">
-<div class="w-full max-w-md map-controls-panel rounded-xl shadow-[var(--shadow-md)] p-4 @[480px]:p-6">
-<label class="flex flex-col w-full">
-<div class="flex w-full items-stretch rounded-lg h-12 bg-white shadow-[var(--shadow-soft)]">
-<div class="text-[var(--text-secondary)] flex items-center justify-center pl-4 rounded-l-lg" data-icon="MagnifyingGlass" data-size="20px" data-weight="regular">
-<svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
-<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
-</svg>
-</div>
-<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--secondary-color)] focus:border-transparent border-none bg-transparent h-full placeholder:text-[var(--text-secondary)] px-3 text-base font-normal" placeholder="Search location or address" style="font-family: var(--font-secondary);"/>
-</div>
-</label>
-<div class="mt-4 grid grid-cols-2 gap-3">
-<button class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[var(--primary-color)] text-[var(--text-primary)] text-sm font-medium shadow-[var(--shadow-soft)] hover:bg-[var(--primary-hover-color)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--secondary-color)] focus:ring-offset-2" style="font-family: var(--font-secondary);">
-<svg class="text-[var(--text-primary)]" fill="currentColor" height="18px" viewBox="0 0 256 256" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M228,118.36a16,16,0,0,0-18.45-13.75L151.3,111.27,111.27,53.05,113,32.5a16,16,0,0,0-13.75-18.45,15.77,15.77,0,0,0-18.43,3.14L24.19,73.82a16,16,0,0,0-3.13,18.43A16,16,0,0,0,32.5,104H53L112.65,223.37a15.91,15.91,0,0,0,15.47,11.83h.53a16,16,0,0,0,15.35-12.27L167.5,144.7l58.22-38.25A16,16,0,0,0,228,118.36ZM151.16,127.74,96.23,163.1,48.56,93.46l54-35.44ZM109.77,216,55.88,39.9l76.24,49.9Z"></path></svg>
-                    Show Route
-                </button>
-<button class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[var(--background-light)] text-[var(--text-primary)] text-sm font-medium border border-slate-300 shadow-[var(--shadow-soft)] hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--secondary-color)] focus:ring-offset-2" style="font-family: var(--font-secondary);">
-<svg class="text-[var(--secondary-color)]" fill="currentColor" height="18px" viewBox="0 0 256 256" width="18px" xmlns="http://www.w3.org/2000/svg"><path d="M128,24a104,104,0,1,0,104,104A104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm40-88a8,8,0,0,1-8,8H136v24a8,8,0,0,1-16,0V136H96a8,8,0,0,1,0-16h24V96a8,8,0,0,1,16,0v24h24A8,8,0,0,1,168,128Z"></path></svg>
-                    Add Waypoint
-                </button>
-</div>
-</div>
-<div class="absolute bottom-6 right-6 flex flex-col items-end gap-2 @[480px]:bottom-8 @[480px]:right-8">
-<div class="flex flex-col rounded-lg shadow-[var(--shadow-md)] overflow-hidden">
-<button class="flex size-11 items-center justify-center bg-[var(--card-background)] hover:bg-slate-200 transition-colors text-[var(--text-primary)] border-b border-slate-300">
-<div data-icon="Plus" data-size="22px" data-weight="bold">
-<svg fill="currentColor" height="22px" viewBox="0 0 256 256" width="22px" xmlns="http://www.w3.org/2000/svg">
-<path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z" font-weight="bold"></path>
-</svg>
-</div>
-</button>
-<button class="flex size-11 items-center justify-center bg-[var(--card-background)] hover:bg-slate-200 transition-colors text-[var(--text-primary)]">
-<div data-icon="Minus" data-size="22px" data-weight="bold">
-<svg fill="currentColor" height="22px" viewBox="0 0 256 256" width="22px" xmlns="http://www.w3.org/2000/svg">
-<path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z" font-weight="bold"></path>
-</svg>
-</div>
-</button>
-</div>
-<button class="flex size-11 items-center justify-center rounded-lg bg-[var(--card-background)] shadow-[var(--shadow-md)] hover:bg-slate-200 transition-colors text-[var(--text-primary)]">
-<div data-icon="NavigationArrow" data-size="22px" data-weight="fill">
-<svg class="text-[var(--secondary-color)]" fill="currentColor" height="22px" viewBox="0 0 256 256" width="22px" xmlns="http://www.w3.org/2000/svg">
-<path d="M231.48,113.06l-160-96A16,16,0,0,0,48,32V224a16,16,0,0,0,23.48,14.94l160-96a16,16,0,0,0,0-29.88ZM64,202.48V53.52L205.15,128Z"></path>
-</svg>
-</div>
-</button>
-</div>
-</div>
-</main>
-</div>
-</div>
-</body></html>
+
+<body class="antialiased bg-[var(--background-light)]">
+  <div class="min-h-screen flex flex-col">
+    <header class="bg-[var(--secondary-color)] text-white py-4 px-6 shadow-sm flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="size-7">
+          <!-- Icon -->
+          <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.8261 17.4264C16.7203 18.1174 20.2244 18.5217 24 18.5217C27.7756 18.5217 31.2797 18.1174 34.1739 17.4264C36.9144 16.7722 39.9967 15.2331 41.3563 14.1648L24.8486 40.6391C24.4571 41.267 23.5429 41.267 23.1514 40.6391L6.64374 14.1648C8.00331 15.2331 11.0856 16.7722 13.8261 17.4264Z" />
+          </svg>
+        </div>
+        <h2 class="text-3xl font-classic">RetailMind</h2>
+      </div>
+    </header>
+
+    <main class="flex-grow relative">
+      <div id="map" class="w-full h-[600px] rounded-lg shadow-md"></div>
+    </main>
+  </div>
+
+  <!-- JavaScript: Leaflet + ORS -->
+  <script>
+    // Create map
+    const map = L.map('map').setView([20.5937, 78.9629], 5); // Center on India
+
+    // Load OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Coordinates: Delhi → Mumbai
+    const coords = {
+      start: [28.6139, 77.2090],  // Delhi
+      end: [19.0760, 72.8777]     // Mumbai
+    };
+
+    // Add markers
+    L.marker(coords.start).addTo(map).bindPopup('Start: Delhi').openPopup();
+    L.marker(coords.end).addTo(map).bindPopup('End: Mumbai');
+
+    // Fetch route from ORS
+    fetch(`https://api.openrouteservice.org/v2/directions/driving-car`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': '5b3ce3597851110001cf624817c0543f66614bc6bd96212133f513f8' // your ORS key
+      },
+      body: JSON.stringify({
+        coordinates: [coords.start, coords.end]
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      const geometry = data.features[0].geometry;
+
+      const route = L.geoJSON(geometry, {
+        style: {
+          color: '#0052CC',
+          weight: 4
+        }
+      }).addTo(map);
+
+      map.fitBounds(route.getBounds());
+    })
+    .catch(err => {
+      console.error('ORS error:', err);
+      alert('Failed to fetch route from OpenRouteService. Check your API key or quota.');
+    });
+  </script>
+</body>
+</html>
