@@ -1,20 +1,19 @@
-# backend/main.py
-
 from fastapi import FastAPI
-from app.routes import demand, fulfilment, delivery, fulfill_and_deliver
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse, JSONResponse
 
 app = FastAPI()
 
-# Include all route modules
-app.include_router(demand.router)
-app.include_router(fulfilment.router)
-app.include_router(delivery.router)
-app.include_router(fulfill_and_deliver.router)
+# Existing routers here...
+# app.include_router(...)
 
-@app.get("/")
-def root():
-    return {"message": "RetailMind Backend is live!"}
+# Serve frontend
+app.mount("/", StaticFiles(directory="../frontend", html=True), name="frontend")
 
-@app.get("/health")
-def health_check():
-    return {"status": "healthy"}
+# Fallback for unknown routes
+@app.exception_handler(404)
+def not_found(request, exc):
+    return FileResponse("../frontend/404.html")
+@app.get("/favicon.ico")
+def favicon():
+    return FileResponse("../frontend/favicon.ico")

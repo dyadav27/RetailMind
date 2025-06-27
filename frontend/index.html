@@ -1,230 +1,120 @@
-<html>
-  <head>
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
-    <link
-      rel="stylesheet"
-      as="style"
-      onload="this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
-    />
-
-    <title>Stitch Design</title>
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
-
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  </head>
-  <body>
-    <div class="relative flex size-full min-h-screen flex-col bg-[#f8fcf8] group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
-      <div class="layout-container flex h-full grow flex-col">
-        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7f4e7] px-10 py-3">
-          <div class="flex items-center gap-4 text-[#0d1c0d]">
-            <div class="size-4">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path></svg>
-            </div>
-            <h2 class="text-[#0d1c0d] text-lg font-bold leading-tight tracking-[-0.015em]">RetailMind</h2>
-          </div>
-          <div class="flex flex-1 justify-end gap-8">
-            <div class="flex items-center gap-9">
-              <a class="text-[#0d1c0d] text-sm font-medium leading-normal" href="#">Product</a>
-              <a class="text-[#0d1c0d] text-sm font-medium leading-normal" href="#">Solutions</a>
-              <a class="text-[#0d1c0d] text-sm font-medium leading-normal" href="#">Resources</a>
-              <a class="text-[#0d1c0d] text-sm font-medium leading-normal" href="#">Pricing</a>
-            </div>
-            <div class="flex gap-2">
-              <button
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#0acb0a] text-[#0d1c0d] text-sm font-bold leading-normal tracking-[0.015em]"
-              >
-                <span class="truncate">Get Started</span>
-              </button>
-              <button
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#e7f4e7] text-[#0d1c0d] text-sm font-bold leading-normal tracking-[0.015em]"
-              >
-                <span class="truncate">Login</span>
-              </button>
-            </div>
-          </div>
-        </header>
-        <div class="px-40 flex flex-1 justify-center py-5">
-          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-            <div class="@container">
-              <div class="@[480px]:p-4">
-                <div
-                  class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-start justify-end px-4 pb-10 @[480px]:px-10"
-                  style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuATCkuU0ywGe5TtZSUU53J2y8MEqhG0WZsx4EEHlRVvR_OWHnuv_WpzI_UigU63RlqaXZoDEFprXpDdVnBifPSY9UktaomWXXoreCrZk6XEkk8ElBpxgQhlErwSEgAVjr6Fc_TlCdsZOR0XRHA2NT6R5NF7JDeI1vDdxyJwwP_AZgAtteRqX6IwXjbgIEXVcF_QBnyL60fhYATtwOmDjXdNbtPW3LumsdBl0lViLy23qBuRbdGWfKZiZfodniZuz8OIpy1xsTbAnLFF");'
-                >
-                  <div class="flex flex-col gap-2 text-left">
-                    <h1
-                      class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
-                    >
-                      AI-Powered Omnichannel Inventory &amp; Delivery Optimizer
-                    </h1>
-                    <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
-                      RetailMind provides real-time insights and predictive analytics to optimize your inventory and delivery operations across all channels. Reduce costs, improve
-                      efficiency, and enhance customer satisfaction with our AI-driven platform.
-                    </h2>
-                  </div>
-                  <button
-                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#0acb0a] text-[#0d1c0d] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
-                  >
-                    <span class="truncate">Request a Demo</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="flex flex-col gap-10 px-4 py-10 @container">
-              <div class="flex flex-col gap-4">
-                <h1
-                  class="text-[#0d1c0d] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
-                >
-                  Key Features
-                </h1>
-                <p class="text-[#0d1c0d] text-base font-normal leading-normal max-w-[720px]">
-                  RetailMind offers a comprehensive suite of features designed to streamline your retail operations and maximize profitability.
-                </p>
-              </div>
-              <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-0">
-                <div class="flex flex-1 gap-3 rounded-lg border border-[#cee8ce] bg-[#f8fcf8] p-4 flex-col">
-                  <div class="text-[#0d1c0d]" data-icon="Truck" data-size="24px" data-weight="regular">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M247.42,117l-14-35A15.93,15.93,0,0,0,218.58,72H184V64a8,8,0,0,0-8-8H24A16,16,0,0,0,8,72V184a16,16,0,0,0,16,16H41a32,32,0,0,0,62,0h50a32,32,0,0,0,62,0h17a16,16,0,0,0,16-16V120A7.94,7.94,0,0,0,247.42,117ZM184,88h34.58l9.6,24H184ZM24,72H168v64H24ZM72,208a16,16,0,1,1,16-16A16,16,0,0,1,72,208Zm81-24H103a32,32,0,0,0-62,0H24V152H168v12.31A32.11,32.11,0,0,0,153,184Zm31,24a16,16,0,1,1,16-16A16,16,0,0,1,184,208Zm48-24H215a32.06,32.06,0,0,0-31-24V128h48Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div class="flex flex-col gap-1">
-                    <h2 class="text-[#0d1c0d] text-base font-bold leading-tight">Smart Inventory Management</h2>
-                    <p class="text-[#499c49] text-sm font-normal leading-normal">
-                      Our AI algorithms predict demand, optimize stock levels, and minimize overstocking or stockouts.
-                    </p>
-                  </div>
-                </div>
-                <div class="flex flex-1 gap-3 rounded-lg border border-[#cee8ce] bg-[#f8fcf8] p-4 flex-col">
-                  <div class="text-[#0d1c0d]" data-icon="Package" data-size="24px" data-weight="regular">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.34,44-29.77,16.3-80.35-44ZM128,120,47.66,76l33.9-18.56,80.34,44ZM40,90l80,43.78v85.79L40,175.82Zm176,85.78h0l-80,43.79V133.82l32-17.51V152a8,8,0,0,0,16,0V107.55L216,90v85.77Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div class="flex flex-col gap-1">
-                    <h2 class="text-[#0d1c0d] text-base font-bold leading-tight">Optimized Delivery Routes</h2>
-                    <p class="text-[#499c49] text-sm font-normal leading-normal">Efficiently plan and manage delivery routes to reduce transit times and delivery costs.</p>
-                  </div>
-                </div>
-                <div class="flex flex-1 gap-3 rounded-lg border border-[#cee8ce] bg-[#f8fcf8] p-4 flex-col">
-                  <div class="text-[#0d1c0d]" data-icon="ChartLine" data-size="24px" data-weight="regular">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M232,208a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V48a8,8,0,0,1,16,0v94.37L90.73,98a8,8,0,0,1,10.07-.38l58.81,44.11L218.73,90a8,8,0,1,1,10.54,12l-64,56a8,8,0,0,1-10.07.38L96.39,114.29,40,163.63V200H224A8,8,0,0,1,232,208Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div class="flex flex-col gap-1">
-                    <h2 class="text-[#0d1c0d] text-base font-bold leading-tight">Real-Time Analytics</h2>
-                    <p class="text-[#499c49] text-sm font-normal leading-normal">
-                      Gain actionable insights with real-time dashboards and reports on inventory levels, sales trends, and delivery performance.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex flex-col gap-10 px-4 py-10 @container">
-              <div class="flex flex-col gap-4">
-                <h1
-                  class="text-[#0d1c0d] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
-                >
-                  How It Works
-                </h1>
-                <p class="text-[#0d1c0d] text-base font-normal leading-normal max-w-[720px]">
-                  RetailMind integrates seamlessly with your existing systems to provide a unified view of your retail operations.
-                </p>
-              </div>
-              <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3">
-                <div class="flex flex-col gap-3 pb-3">
-                  <div
-                    class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuANF56nQIqWYphtR02vP7UXls2Ll311gZ9YmKjrXcLUu1UzIV377XPCe8kwMnW_qcPNXsQn1LmN-ruC6W9841rufJn6oSeqMawNv7O94b6nvEqHN09Olv7cxyoI0KZcMTZ1_ZHMdinTqSZ_nlbEOiSbtE5xOyVVFwCzGRTNMPYIorjgjzMQHb3PEKXDSHK1FodK1aG_K2UuXxB44P-67w0jUQlr52eMK6We2Ee6UlXCwYYZXN4HbtNTgXcjMvGWqiPC7BqKheHbIQGH");'
-                  ></div>
-                  <div>
-                    <p class="text-[#0d1c0d] text-base font-medium leading-normal">Data Integration</p>
-                    <p class="text-[#499c49] text-sm font-normal leading-normal">Connect your sales, inventory, and delivery data from all channels into a single platform.</p>
-                  </div>
-                </div>
-                <div class="flex flex-col gap-3 pb-3">
-                  <div
-                    class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBOEoYPcUBREcA7nPdq4GjYlGcMu2NBYwYVob-y4z7668P9ZrKvpkiqF36Jf1QFWK_iHIMBLDW1ZM5bcNU0FFHgpec5H1fBUba7drYSCiszOSs9vohG8LVY7R5g38gzy-5IePh-h2_JBEf1doeR6qtIiUm-FDVprE7aFMI5YyzHX0VFn7k65kwzryvEWEFwmdEPy2FAuNknR_3eFX_D2Z5ParkxF3vMP3tSIeEFXuc3OrrH80Mwq4Kai6R2rEWO9V5sOMOy9OVM6_2y");'
-                  ></div>
-                  <div>
-                    <p class="text-[#0d1c0d] text-base font-medium leading-normal">AI-Powered Optimization</p>
-                    <p class="text-[#499c49] text-sm font-normal leading-normal">
-                      Our AI models analyze your data to identify patterns, predict trends, and optimize your operations.
-                    </p>
-                  </div>
-                </div>
-                <div class="flex flex-col gap-3 pb-3">
-                  <div
-                    class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC_t4a5qHGXyZQTWoUe5zOwLaRs2o315uGjWAtn6FgvnPigBiu1h5-WyAYAZRJS7Poyw0eC3zmkRrKBWPXdyVL-ew1PEE-eW0--ECKW7-ZPaZi9m4TRw-knW_aTzAegxYqSvCq8aSTuN3eO_sc8LHD7vU2OlJj8_7Lab-Kz7DaoTrlaxhkmqVSXSDFaEQWD7n0MvL95uk5p29D9vfF3RUPg7szc79jxYM6XzcU7xPFFRm6ZnuPKoP0o1d3MOGAD2KH7QBqmgk36b_eK");'
-                  ></div>
-                  <div>
-                    <p class="text-[#0d1c0d] text-base font-medium leading-normal">Actionable Insights</p>
-                    <p class="text-[#499c49] text-sm font-normal leading-normal">
-                      Make informed decisions with clear, actionable insights delivered through intuitive dashboards and reports.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="@container">
-              <div class="flex flex-col justify-end gap-6 px-4 py-10 @[480px]:gap-8 @[480px]:px-10 @[480px]:py-20">
-                <div class="flex flex-col gap-2 text-center">
-                  <h1
-                    class="text-[#0d1c0d] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
-                  >
-                    Ready to Transform Your Retail Operations?
-                  </h1>
-                  <p class="text-[#0d1c0d] text-base font-normal leading-normal max-w-[720px">
-                    Join leading retailers who are leveraging RetailMind to achieve greater efficiency and profitability.
-                  </p>
-                </div>
-                <div class="flex flex-1 justify-center">
-                  <div class="flex justify-center">
-                    <button
-                      class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#0acb0a] text-[#0d1c0d] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] grow"
-                    >
-                      <span class="truncate">Get Started</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
-              <div class="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
-                <a class="text-[#499c49] text-base font-normal leading-normal min-w-40" href="#">Privacy Policy</a>
-                <a class="text-[#499c49] text-base font-normal leading-normal min-w-40" href="#">Terms of Service</a>
-                <a class="text-[#499c49] text-base font-normal leading-normal min-w-40" href="#">Contact Us</a>
-              </div>
-              <p class="text-[#499c49] text-base font-normal leading-normal">© 2024 RetailMind. All rights reserved.</p>
-            </footer>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Bogle%3Awght%40400%3B700&amp;family=Bogle+Web%3Awght%40400%3B700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #007bff;--secondary-color: #f0f0f0;--accent-color: #ffc107;--text-primary: #000000;--text-secondary: #ffffff;--background-color: #ffffff;}
+      .carousel-item {
+        display: none;
+        transition: opacity 1s ease-in-out;
+      }
+      .carousel-item.active {
+        display: block;
+        opacity: 1;
+      }
+      .carousel-item {
+        opacity: 0;
+      }
+      body {
+        font-family: 'Bogle Web', sans-serif;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Bogle', sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-[var(--background-color)]">
+<div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[var(--secondary-color)] bg-[var(--background-color)]/80 px-6 py-4 backdrop-blur-md">
+<div class="flex items-center gap-3 text-[var(--text-primary)]">
+<div class="size-6 text-[var(--accent-color)]">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_330)">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clipPath id="clip0_6_330"><rect fill="white" height="48" width="48"></rect></clipPath>
+</defs>
+</svg>
+</div>
+<h2 class="text-[var(--text-primary)] text-2xl font-bold leading-tight tracking-[-0.015em]">RetailMind</h2>
+</div>
+<nav class="hidden lg:flex flex-1 justify-center items-center gap-6">
+<a class="text-[var(--text-primary)] text-sm font-medium leading-normal hover:text-[var(--primary-color)] transition-colors" href="#">Demand Forecast</a>
+<a class="text-[var(--text-primary)] text-sm font-medium leading-normal hover:text-[var(--primary-color)] transition-colors" href="#">Fulfillment Recommendation</a>
+<a class="text-[var(--text-primary)] text-sm font-medium leading-normal hover:text-[var(--primary-color)] transition-colors" href="#">Delivery Estimator</a>
+<a class="text-[var(--text-primary)] text-sm font-medium leading-normal hover:text-[var(--primary-color)] transition-colors" href="#">Route Visualizer</a>
+<a class="text-[var(--text-primary)] text-sm font-medium leading-normal hover:text-[var(--primary-color)] transition-colors" href="#">Combined Fulfill &amp; Estimate</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="flex min-w-[90px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-md h-10 px-4 bg-[var(--primary-color)] text-[var(--text-secondary)] text-sm font-semibold leading-normal tracking-[0.015em] hover:bg-blue-600 transition-colors">
+<span class="truncate">Book a Demo</span>
+</button>
+<button class="hidden sm:flex min-w-[90px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-md h-10 px-4 bg-[var(--accent-color)] text-[var(--text-primary)] text-sm font-semibold leading-normal tracking-[0.015em] hover:bg-yellow-400 transition-colors">
+<span class="truncate">Learn More</span>
+</button>
+</div>
+<button class="lg:hidden text-[var(--text-primary)] focus:outline-none">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</header>
+<main class="flex flex-1 flex-col pt-[72px]">
+<div class="relative h-[calc(100vh-72px)] w-full overflow-hidden" id="hero-carousel">
+<div class="carousel-item active absolute inset-0 bg-cover bg-center" style='background-image: linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDzwI7SNJrYI22F5DwzGEnmPbzYyEjEzrDPmehSQkk9HxsP4LlHrJt8pmrUfxBfZV6o1gPepKWYO5pmvCreIljkwFy9ul7i4tQ484iD5f5QfljXJ5pDnLTOp3zfaR3jIkR8HmsuoeQR_8gIU-1xWBF7hFAasZs56wQtKheLlIqETvkIarQJWvUSEPr2Mmr6MlwrdSTvxuNuQ_-3_83Wtg0SV_UgMdHlYnAxxjNgR63_8RRfJEbplFJHqzHrvm3N2uiAk2y3bOXzO7U");'></div>
+<div class="carousel-item absolute inset-0 bg-cover bg-center" style='background-image: linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDzwI7SNJrYI22F5DwzGEnmPbzYyEjEzrDPmehSQkk9HxsP4LlHrJt8pmrUfxBfZV6o1gPepKWYO5pmvCreIljkwFy9ul7i4tQ484iD5f5QfljXJ5pDnLTOp3zfaR3jIkR8HmsuoeQR_8gIU-1xWBF7hFAasZs56wQtKheLlIqETvkIarQJWvUSEPr2Mmr6MlwrdSTvxuNuQ_-3_83Wtg0SV_UgMdHlYnAxxjNgR63_8RRfJEbplFJHqzHrvm3N2uiAk2y3bOXzO7U");'></div>
+<div class="carousel-item absolute inset-0 bg-cover bg-center" style='background-image: linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDzwI7SNJrYI22F5DwzGEnmPbzYyEjEzrDPmehSQkk9HxsP4LlHrJt8pmrUfxBfZV6o1gPepKWYO5pmvCreIljkwFy9ul7i4tQ484iD5f5QfljXJ5pDnLTOp3zfaR3jIkR8HmsuoeQR_8gIU-1xWBF7hFAasZs56wQtKheLlIqETvkIarQJWvUSEPr2Mmr6MlwrdSTvxuNuQ_-3_83Wtg0SV_UgMdHlYnAxxjNgR63_8RRfJEbplFJHqzHrvm3N2uiAk2y3bOXzO7U");'></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+<h1 class="text-[var(--text-secondary)] text-4xl sm:text-5xl md:text-7xl font-bold leading-tight tracking-tight max-w-3xl">
+                AI-driven Inventory &amp; Delivery Optimization
+              </h1>
+<p class="mt-6 text-lg text-slate-100 max-w-xl font-normal">
+                Optimize your supply chain, predict demand, and streamline deliveries across India with our cutting-edge AI platform.
+              </p>
+<div class="mt-10 flex flex-col sm:flex-row items-center gap-4">
+<button class="flex min-w-[140px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-[var(--primary-color)] text-[var(--text-secondary)] text-base font-bold leading-normal tracking-[0.015em] hover:bg-blue-600 transition-colors">
+<span class="truncate">Book a Demo</span>
+</button>
+<button class="flex min-w-[140px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-[var(--accent-color)] text-[var(--text-primary)] text-base font-bold leading-normal tracking-[0.015em] backdrop-blur-sm hover:bg-yellow-400 transition-colors">
+<span class="truncate">Learn More</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
 <script>
-  // Tailwind CSS configuration for container queries
-  tailwind.config = {
-    theme: {
-      extend: {
-        container: {
-          center: true,
-          padding: '2rem',
-          screens: {
-            '2xl': '1400px',
-          },
-        },
-      },
-    },
-  };
+      const carouselItems = document.querySelectorAll('.carousel-item');
+      let currentIndex = 0;
+      function showNextItem() {
+        carouselItems[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % carouselItems.length;
+        carouselItems[currentIndex].classList.add('active');
+      }
+      if (carouselItems.length > 0) {
+        carouselItems[0].classList.add('active'); // Show the first item initially
+        setInterval(showNextItem, 5000); // Change image every 5 seconds
+      }
+      // Basic mobile menu toggle
+      const menuButton = document.querySelector('header button.lg\\:hidden');
+      const mobileNav = document.querySelector('header nav');
+      if (menuButton && mobileNav) {
+        menuButton.addEventListener('click', () => {
+          mobileNav.classList.toggle('hidden');
+          mobileNav.classList.toggle('absolute');
+          mobileNav.classList.toggle('top-16');
+          mobileNav.classList.toggle('left-0');
+          mobileNav.classList.toggle('right-0');
+          mobileNav.classList.toggle('bg-[var(--background-color)]/95');
+          mobileNav.classList.toggle('p-4');
+          mobileNav.classList.toggle('flex-col');
+          mobileNav.classList.toggle('items-start');
+        });
+      }
+    </script>
+</body></html>
