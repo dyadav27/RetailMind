@@ -6,6 +6,16 @@
 <title>RetailMind</title>
 <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- ORS Leaflet Plugin -->
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
+
 <style type="text/tailwindcss">
       :root {
         --primary-color: #FACC15;--secondary-color: #3B82F6;--accent-color: #1F2937;--light-gray: #E5E7EB;
@@ -57,10 +67,7 @@
 <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
 </svg>
 </div>
-<a href="index.html">
-  <h2 class="text-[var(--dark-gray)] text-2xl font-brand font-bold leading-tight tracking-tight">RetailMind</h2>
-</a>
-
+<h2 class="text-[var(--dark-gray)] text-2xl font-brand font-bold leading-tight tracking-tight">RetailMind</h2>
 </div>
 <nav class="hidden md:flex items-center gap-6">
   <a class="text-[var(--text-color-secondary)] hover:text-[var(--secondary-color)] text-sm font-medium transition-colors" href="index.html">Dashboard</a>
@@ -132,22 +139,11 @@
 </div>
 </div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-5 gap-8">
 <div class="md:col-span-3 bg-white p-6 rounded-xl shadow-lg">
-<h3 class="text-[var(--dark-gray)] text-lg font-bold mb-4 font-brand">Route Map</h3>
-<div class="relative w-full aspect-[16/10] bg-gray-200 rounded-lg overflow-hidden">
-<img alt="India Route Map" class="absolute inset-0 w-full h-full object-cover" src="https://upload.wikimedia.org/wikipedia/commons/1/1b/India_location_map.svg"/>
-<svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 200 125">
-<path class="route-path" d="M30 95 Q 100 110 170 30" fill="none" stroke="var(--secondary-color)" stroke-dasharray="8, 8" stroke-linecap="round" stroke-width="3"></path>
-</svg>
-<div class="absolute map-pin" style="left: 12%; top: 72%;">
-<span class="material-icons text-[var(--secondary-color)] text-4xl -translate-x-1/2 -translate-y-full">warehouse</span>
+  <h3 class="text-[var(--dark-gray)] text-lg font-bold mb-4 font-brand">Route Map</h3>
+  <div id="orsMap" class="w-full h-[400px] rounded-lg overflow-hidden"></div>
 </div>
-<div class="absolute map-pin" style="left: 85%; top: 20%;">
-<span class="material-icons text-[var(--primary-color)] text-4xl -translate-x-1/2 -translate-y-full">place</span>
-</div>
-</div>
-</div>
+<div class="md:grid md:grid-cols-2 md:gap-6"></div>
 <div class="md:col-span-2 bg-white p-6 rounded-xl shadow-lg">
 <h3 class="text-[var(--dark-gray)] text-lg font-bold mb-6 font-brand">Delivery Timeline</h3>
 <div class="space-y-2">
@@ -186,4 +182,31 @@
 </main>
 </div>
 </div>
+<script>
+  const orsApiKey = '5b3ce3597851110001cf624817c0543f66614bc6bd96212133f513f8'; // Replace with your real ORS key
+
+  const map = L.map('orsMap').setView([22.9734, 78.6569], 5); // Center of India
+
+  L.tileLayer(`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`, {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  const source = L.latLng(28.6139, 77.2090); // Delhi
+  const destination = L.latLng(19.0760, 72.8777); // Mumbai
+
+  const control = L.Routing.control({
+    waypoints: [source, destination],
+    router: L.Routing.openrouteservice(orsApiKey),
+    lineOptions: {
+      styles: [{ color: '#3B82F6', weight: 5 }]
+    },
+    createMarker: function(i, wp, nWps) {
+      const icon = L.divIcon({ className: 'material-icons text-[var(--primary-color)]', html: i === 0 ? 'warehouse' : 'place' });
+      return L.marker(wp.latLng, { icon });
+    },
+    show: false,
+    addWaypoints: false
+  }).addTo(map);
+</script>
+
 </body></html>
